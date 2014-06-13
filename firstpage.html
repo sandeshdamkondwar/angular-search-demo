@@ -10,17 +10,32 @@
 
     <div class="container">
         <div class="row">
+            <!-- <div data-ng-view></div> -->
             <div class="col-md-12 hv-champs-2014" ng-controller="ChampionsController">
                 <h4>2014 Heavy Weight Champions:</h4>
                 <ul class="champions">
-                    <li data-ng-repeat="championName in champions | filter:name | orderBy:'city'" class="champion">
+                    <li data-ng-repeat="championName in champions | filter:filter.name | orderBy:'city'" class="champion">
                         <span class="name">{{ championName.name | uppercase }}</span>
                         <span class="city">{{ championName.city | uppercase }}</span>
                     </li>
                 </ul>
 
-                <h5>Search the champion:</h5>
-                <input type="text" data-ng-model="name" class="form-control">
+                <h4>Search the champion:</h4>
+                <input type="text" data-ng-model="filter.name" class="form-control">
+                <br>
+                <h4>Add a new Champion:</h4>
+
+                <form class="add-champion-form">
+                    <div class="form-group">
+                        <label for="newChampionName">Name</label>
+                        <input id="newChampionName" name="newChampionName" type="text" data-ng-model="newChampion.name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="newCityName">City</label>
+                        <input id="newCityName" name="newCityName" type="text" data-ng-model="newChampion.city" class="form-control">
+                    </div>
+                    <button class="btn btn-primary" data-ng-click="addChamp()">Add this Champion</button>
+                </form>
             </div>
         </div>
     </div>
@@ -33,6 +48,17 @@
 
         var controllers = {};
 
+        // Adding routers
+        // searchApp.config(function ($routeProvider) {
+        //     $routeProvider.when('/', {
+        //         controller: "ChampionsController",
+        //         templateUrl: "partials/list_champions.html"
+        //     }).when('/champions', {
+        //         controller: "ChampionsController",
+        //         templateUrl: "partials/create_champion.html"
+        //     });
+        // });
+
         // Let's define our controller
         controllers.ChampionsController = function ($scope) {
             $scope.champions =  [
@@ -42,6 +68,13 @@
                 {name: 'Randy Orton', city: 'San Fansisco'},
                 {name: 'Shemous', city: 'New York'}
             ];
+
+            $scope.addChamp = function (champion) {
+                $scope.champions.push({
+                    name: $scope.newChampion.name,
+                    city: $scope.newChampion.city
+                });
+            };
         };
 
         // Add defined controllers in module

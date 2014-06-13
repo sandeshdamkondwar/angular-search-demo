@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html data-ng-app="">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular Practice</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style type="text/css">
+        body {
+            font-family: "Open Sans";
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 300;
+        }
+
+        .container {
+            background-color: #313A49;
+            padding: 1em 2em 2em;
+            color: #FFF;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            list-style: none;
+            background-color: #4D92CB;
+            color: white;
+            margin: 2em 3em;
+            margin-left: 0;
+        }
+
+        .name,
+        .city {
+            padding: 20px;
+            display: inline-block;
+        }
+
+        .city {
+            background-color: #FCFCFC;
+            color: #333;
+            display: list-item;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container"
+        data-ng-init="champions=[{name: 'john Cena', city: 'New York'}, {name:'Sandy Damy', city: 'Pune'}, {name: 'Daniel Brayan', city: 'New Jersey'}, {name: 'Randy Orton', city: 'San Fansisco'}, {name: 'Shemous', city: 'New York'}]">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4>2014 Heavy Weight Champions:</h4>
+                <ul>
+                    <li data-ng-repeat="championName in champions | filter:name | orderBy:'city'">
+                        <span class="name">{{ championName.name | uppercase }}</span>
+                        <span class="city">{{ championName.city | uppercase }}</span>
+                    </li>
+                </ul>
+                <br>
+                <h5>Search the champion:</h5>
+                <input type="text" data-ng-model="name" class="form-control">
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="js/angular.js" type="text/javascript"></script>
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+</body>
+</html>

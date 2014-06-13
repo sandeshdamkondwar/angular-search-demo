@@ -50,11 +50,9 @@
 </head>
 <body>
 
-    <div class="container"
-        data-ng-init="champions=[{name: 'john Cena', city: 'New York'}, {name:'Sandy Damy', city: 'Pune'}, {name: 'Daniel Brayan', city: 'New Jersey'}, {name: 'Randy Orton', city: 'San Fansisco'}, {name: 'Shemous', city: 'New York'}]">
-
+    <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 hv-champs-2014" ng-controller="ChampionsController">
                 <h4>2014 Heavy Weight Champions:</h4>
                 <ul>
                     <li data-ng-repeat="championName in champions | filter:name | orderBy:'city'">
@@ -72,5 +70,16 @@
 
     <script src="js/angular.js" type="text/javascript"></script>
     <script src="js/bootstrap.js" type="text/javascript"></script>
+    <script>
+        function ChampionsController ($scope) {
+            $scope.champions =  [
+                {name: 'john Cena', city: 'New York'},
+                {name:'Sandy Damy', city: 'Pune'},
+                {name: 'Daniel Brayan', city: 'New Jersey'},
+                {name: 'Randy Orton', city: 'San Fansisco'},
+                {name: 'Shemous', city: 'New York'}
+            ];
+        }
+    </script>
 </body>
 </html>

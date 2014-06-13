@@ -1,0 +1,41 @@
+body {
+  font-family: "Open Sans";
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+
+.container {
+  background-color: #313A49;
+  padding: 1em 2em 2em;
+  color: #FFF;
+}
+
+.champions {
+  margin: 0;
+  padding: 0;
+}
+
+.champion {
+  display: inline-block;
+  list-style: none;
+  background-color: #4D92CB;
+  color: white;
+  margin: 2em 3em;
+  margin-left: 0;
+}
+.champion .name,
+.champion .city {
+  padding: 20px;
+  display: inline-block;
+}
+.champion .city {
+  background-color: #FCFCFC;
+  color: #333;
+  display: list-item;
+  text-align: center;
+}
+
+/*# sourceMappingURL=base.css.map */
